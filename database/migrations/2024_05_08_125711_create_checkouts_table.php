@@ -15,8 +15,8 @@ return new class extends Migration
 			$table->id();
 			$table->foreignId('member_id')->constrained('members')->cascadeOnDelete();
 			$table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
-			$table->date('start_date');
-			$table->date('end_date');
+			$table->date('due_date');
+			$table->date('return_date')->nullable();
 			$table->boolean('returned')->default(false);
 			$table->timestamps();
 		});

@@ -44,11 +44,12 @@ class BookResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('title'),
+				Tables\Columns\TextColumn::make('title')->searchable(),
 				Tables\Columns\TextColumn::make('category.name'),
 				Tables\Columns\TextColumn::make('publisher.name'),
 				Tables\Columns\TextColumn::make('stock')
 					->numeric()
+					->sortable()
 					->alignRight(),
 			])
 			->filters([

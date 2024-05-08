@@ -13,9 +13,8 @@ class Checkout extends Model
 	protected $fillable = [
 		'member_id',
 		'book_id',
-		'start_date',
-		'end_date',
-		'returned',
+		'due_date',
+		'return_date',
 	];
 
 	public function book(): BelongsTo

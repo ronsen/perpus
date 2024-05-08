@@ -38,7 +38,7 @@ class BooksRelationManager extends RelationManager
 		return $table
 			->recordTitleAttribute('title')
 			->columns([
-				Tables\Columns\TextColumn::make('title'),
+				Tables\Columns\TextColumn::make('title')->searchable(),
 				Tables\Columns\TextColumn::make('category.name'),
 				Tables\Columns\TextColumn::make('publisher.name'),
 				Tables\Columns\TextColumn::make('stock')

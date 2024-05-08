@@ -26,18 +26,19 @@ class CheckoutResource extends Resource
 				Forms\Components\Select::make('book_id')
 					->label('Book')
 					->relationship('book', 'title')
-					->searchable(),
+					->searchable()
+					->required(),
 				Forms\Components\Select::make('member_id')
 					->label('Member')
 					->relationship('member', 'name')
-					->searchable(),
-				Forms\Components\DatePicker::make('start_date')
-					->label('Start Date')
-					->default(now()),
-				Forms\Components\DatePicker::make('end_date')
-					->label('End Date')
-					->default(now()),
-				Forms\Components\Checkbox::make('returned')->default(false),
+					->searchable()
+					->required(),
+				Forms\Components\DatePicker::make('due_date')
+					->label('Due Date')
+					->default(now())
+					->required(),
+				Forms\Components\DatePicker::make('return_date')
+					->label('Return Date'),
 			]);
 	}
 
@@ -47,9 +48,8 @@ class CheckoutResource extends Resource
 			->columns([
 				Tables\Columns\TextColumn::make('book.title')->label('Book'),
 				Tables\Columns\TextColumn::make('member.name')->label('Member'),
-				Tables\Columns\TextColumn::make('start_date')->label('Start Date')->date(),
-				Tables\Columns\TextColumn::make('end_date')->label('End Date')->date(),
-				Tables\Columns\CheckboxColumn::make('returned')->alignCenter(),
+				Tables\Columns\TextColumn::make('due_date')->label('Due Date')->date(),
+				Tables\Columns\TextColumn::make('return_date')->label('Return Date')->date(),
 			])
 			->filters([
 				//
