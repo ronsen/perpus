@@ -17,7 +17,7 @@ php artisan migrate --seed
 Cara menjalankan aplikasi di lokal:
 
 ```
-php arisan serve
+php artisan serve
 ```
 
 Buka `http://localhost:8080` di peramban web dengan pengguna `admin@example.com` dan `password` sebagai sandinya.
