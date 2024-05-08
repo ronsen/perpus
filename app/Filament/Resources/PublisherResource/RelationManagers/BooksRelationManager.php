@@ -54,6 +54,6 @@ class BooksRelationManager extends RelationManager
 				Tables\Actions\BulkActionGroup::make([
 					Tables\Actions\DeleteBulkAction::make(),
 				]),
-			]);
+			])->defaultSort('title', 'asc');
 	}
 }
