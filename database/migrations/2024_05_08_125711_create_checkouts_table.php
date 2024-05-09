@@ -14,11 +14,16 @@ return new class extends Migration
 		Schema::create('checkouts', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('member_id')->constrained('members')->cascadeOnDelete();
-			$table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
 			$table->date('due_date');
 			$table->date('return_date')->nullable();
 			$table->boolean('returned')->default(false);
 			$table->timestamps();
+		});
+
+		Schema::create('book_checkout', function (Blueprint $table) {
+			$table->id();
+			$table->foreignId('checkout_id')->constrained('checkouts');
+			$table->foreignId('book_id')->constrained('books');
 		});
 	}
 
@@ -28,5 +33,6 @@ return new class extends Migration
 	public function down(): void
 	{
 		Schema::dropIfExists('checkouts');
+		Schema::dropIfExists('book_checkout');
 	}
 };

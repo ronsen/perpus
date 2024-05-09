@@ -36,8 +36,8 @@ class Book extends Model
 		return $this->belongsToMany(Author::class);
 	}
 
-	public function checkouts(): HasMany
+	public function checkouts(): BelongsToMany
 	{
-		return $this->hasMany(Checkout::class);
+		return $this->BelongsToMany(Checkout::class);
 	}
 }

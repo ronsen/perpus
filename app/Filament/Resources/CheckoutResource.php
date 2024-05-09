@@ -23,11 +23,6 @@ class CheckoutResource extends Resource
 	{
 		return $form
 			->schema([
-				Forms\Components\Select::make('book_id')
-					->label('Book')
-					->relationship('book', 'title')
-					->searchable()
-					->required(),
 				Forms\Components\Select::make('member_id')
 					->label('Member')
 					->relationship('member', 'name')
@@ -35,7 +30,7 @@ class CheckoutResource extends Resource
 					->required(),
 				Forms\Components\DatePicker::make('due_date')
 					->label('Due Date')
-					->default(now())
+					->default(now()->addWeek())
 					->required(),
 				Forms\Components\DatePicker::make('return_date')
 					->label('Return Date'),
@@ -46,7 +41,6 @@ class CheckoutResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('book.title')->label('Book'),
 				Tables\Columns\TextColumn::make('member.name')->label('Member'),
 				Tables\Columns\TextColumn::make('due_date')->label('Due Date')->date(),
 				Tables\Columns\TextColumn::make('return_date')->label('Return Date')->date(),
@@ -67,7 +61,7 @@ class CheckoutResource extends Resource
 	public static function getRelations(): array
 	{
 		return [
-			//
+			RelationManagers\BooksRelationManager::class,
 		];
 	}
 
