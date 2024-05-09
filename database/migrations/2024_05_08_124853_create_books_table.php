@@ -16,7 +16,6 @@ return new class extends Migration
 			$table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
 			$table->foreignId('publisher_id')->constrained('publishers')->cascadeOnDelete();
 			$table->string('title');
-			$table->unsignedInteger('stock')->default(0);
 			$table->softDeletes();
 			$table->timestamps();
 		});

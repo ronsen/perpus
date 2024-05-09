@@ -18,7 +18,6 @@ class Book extends Model
 		'publisher_id',
 		'author_id',
 		'title',
-		'stock',
 	];
 
 	public function category(): BelongsTo

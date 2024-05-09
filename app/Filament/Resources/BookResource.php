@@ -25,6 +25,7 @@ class BookResource extends Resource
 	{
 		return $form
 			->schema([
+				Forms\Components\TextInput::make('title')->required(),
 				Forms\Components\Select::make('category_id')
 					->label('Category')
 					->relationship('category', 'name'),
@@ -32,11 +33,6 @@ class BookResource extends Resource
 					->label('Publisher')
 					->relationship('category', 'name')
 					->searchable(),
-				Forms\Components\TextInput::make('title')->required(),
-				Forms\Components\TextInput::make('stock')
-					->numeric()
-					->default(0)
-					->required(),
 			]);
 	}
 
@@ -47,10 +43,6 @@ class BookResource extends Resource
 				Tables\Columns\TextColumn::make('title')->searchable(),
 				Tables\Columns\TextColumn::make('category.name'),
 				Tables\Columns\TextColumn::make('publisher.name'),
-				Tables\Columns\TextColumn::make('stock')
-					->numeric()
-					->sortable()
-					->alignRight(),
 			])
 			->filters([
 				//

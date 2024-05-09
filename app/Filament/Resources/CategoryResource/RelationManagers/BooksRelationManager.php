@@ -23,10 +23,6 @@ class BooksRelationManager extends RelationManager
 					->relationship('category', 'name')
 					->searchable(),
 				Forms\Components\TextInput::make('title')->required(),
-				Forms\Components\TextInput::make('stock')
-					->numeric()
-					->default(0)
-					->required(),
 			]);
 	}
 
@@ -37,9 +33,6 @@ class BooksRelationManager extends RelationManager
 			->columns([
 				Tables\Columns\TextColumn::make('title')->searchable(),
 				Tables\Columns\TextColumn::make('publisher.name'),
-				Tables\Columns\TextColumn::make('stock')->sortable()
-					->numeric()
-					->alignRight(),
 			])
 			->filters([
 				//

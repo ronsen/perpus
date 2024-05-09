@@ -23,7 +23,6 @@ class BookFactory extends Factory
 			'category_id' => Category::inRandomOrder()->first()->id,
 			'publisher_id' => Publisher::inRandomOrder()->first()->id,
 			'title' => ucwords(fake()->words(3, true)),
-			'stock' => fake()->numberBetween(5, 10),
 		];
 	}
 }
