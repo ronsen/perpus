@@ -17,20 +17,7 @@ class CheckoutsRelationManager extends RelationManager
 	public function form(Form $form): Form
 	{
 		return $form
-			->schema([
-				Forms\Components\Select::make('member_id')
-					->label('Member')
-					->relationship('member', 'name')
-					->searchable()
-					->required(),
-				Forms\Components\DatePicker::make('due_date')
-					->label('Due Date')
-					->default(now())
-					->required(),
-				Forms\Components\DatePicker::make('return_date')
-					->label('Return Date')
-					->default(now()),
-			]);
+			->schema([]);
 	}
 
 	public function table(Table $table): Table
@@ -42,15 +29,10 @@ class CheckoutsRelationManager extends RelationManager
 				Tables\Columns\TextColumn::make('due_date')->label('Due Date')->date(),
 				Tables\Columns\TextColumn::make('return_date')->label('Return Date')->date(),
 			])
-			->filters([
-				//
-			])
-			->headerActions([
-				Tables\Actions\CreateAction::make(),
-			])
+			->filters([])
+			->headerActions([])
 			->actions([
-				Tables\Actions\EditAction::make(),
-				Tables\Actions\DeleteAction::make(),
+				Tables\Actions\DetachAction::make(),
 			])
 			->bulkActions([
 				Tables\Actions\BulkActionGroup::make([

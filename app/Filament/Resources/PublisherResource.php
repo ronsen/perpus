@@ -36,10 +36,14 @@ class PublisherResource extends Resource
 				Tables\Columns\TextColumn::make('name')->searchable(),
 			])
 			->filters([
-				//
+				Tables\Filters\TrashedFilter::make(),
 			])
 			->actions([
-				Tables\Actions\EditAction::make(),
+				Tables\Actions\ActionGroup::make([
+					Tables\Actions\EditAction::make(),
+					Tables\Actions\DeleteAction::make(),
+					Tables\Actions\RestoreAction::make(),
+				]),
 			])
 			->bulkActions([
 				Tables\Actions\BulkActionGroup::make([

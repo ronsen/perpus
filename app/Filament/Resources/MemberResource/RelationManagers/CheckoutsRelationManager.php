@@ -18,10 +18,6 @@ class CheckoutsRelationManager extends RelationManager
 	{
 		return $form
 			->schema([
-				Forms\Components\Select::make('book_id')
-					->label('Book')
-					->relationship('book', 'title')
-					->searchable(),
 				Forms\Components\DatePicker::make('due_date')
 					->label('Due Date')
 					->default(now())
@@ -37,7 +33,6 @@ class CheckoutsRelationManager extends RelationManager
 		return $table
 			->recordTitleAttribute('id')
 			->columns([
-				Tables\Columns\TextColumn::make('book.title')->label('Book'),
 				Tables\Columns\TextColumn::make('due_date')->label('Due Date')->date(),
 				Tables\Columns\TextColumn::make('return_date')->label('Return Date')->date(),
 			])
@@ -48,8 +43,10 @@ class CheckoutsRelationManager extends RelationManager
 				Tables\Actions\CreateAction::make(),
 			])
 			->actions([
-				Tables\Actions\EditAction::make(),
-				Tables\Actions\DeleteAction::make(),
+				Tables\Actions\ActionGroup::make([
+					Tables\Actions\EditAction::make(),
+					Tables\Actions\DeleteAction::make(),
+				]),
 			])
 			->bulkActions([
 				Tables\Actions\BulkActionGroup::make([
