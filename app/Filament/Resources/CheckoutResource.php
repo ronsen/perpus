@@ -41,7 +41,7 @@ class CheckoutResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('member.name')->label('Member'),
+				Tables\Columns\TextColumn::make('member.name')->label('Member')->searchable(),
 				Tables\Columns\TextColumn::make('due_date')->label('Due Date')->date(),
 				Tables\Columns\TextColumn::make('return_date')->label('Return Date')->date(),
 			])
